@@ -30,6 +30,12 @@ release: clean
 	curl --fail -u $(CHARTMUSEUM_CREDS_USR):$(CHARTMUSEUM_CREDS_PSW) --data-binary "@$(NAME)-$(shell sed -n 's/^version: //p' Chart.yaml).tgz" $(CHART_REPO)/api/charts
 	rm -rf ${NAME}*.tgz%
 
+
+dry-run: manifests
+	cd config/manager && kustomize edit set image controller=${IMG}
+	mkdir -p dry-run
+	kustomize build config/default > dry-run/manifests.yaml
+
 tag:
 ifeq ($(OS),Darwin)
 	sed -i "" -e "s/version:.*/version: $(RELEASE_VERSION)/" Chart.yaml
