@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world-pod
-        image: sreelk589/docker-kubernetes-hello-world:latest
+        image: abyalias/task13:latest
         ports: 
         - containerPort: 80
         - containerPort: 443
