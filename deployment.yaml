@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world-pod
-        image: abyalias/task13:latest
+        image: abyalias/task14:tags
         ports: 
         - containerPort: 80
 ---
